@@ -1,3 +1,5 @@
+import { Mail, Github, Linkedin } from "lucide-react";
+
 const projects = [
   {
     title: "AI Product Copilot",
@@ -14,14 +16,23 @@ const projects = [
     description:
       "An interactive Q&A agent that answers questions about my background using my resume/LinkedIn info.",
     tags: ["LLM", "Python", "Gradio", "OpenAI", "MongoDB Atlas"],
-    links: { github: "", live: "https://huggingface.co/spaces/ricardo-viera/career_conversation" },
+    links: {
+      github: "",
+      live: "https://huggingface.co/spaces/ricardo-viera/career_conversation",
+    },
   },
   {
-    title: "Career Conversation",
-    description:
-      "An interactive Q&A agent that answers questions about my background using my resume/LinkedIn info.",
-    tags: ["LLM", "Python", "Gradio", "OpenAI", "MongoDB Atlas"],
-    links: { github: "", live: "https://huggingface.co/spaces/ricardo-viera/career_conversation" },
+    title: "Deep Research",
+    description: `Deep research utilizes different agents in order to automate the research process.
+      The agents are in charge of recording user input, come up with clarifying questions, 
+      perform the research and finally show the results to the user, in markdown format. 
+      The user then has the option to email the research document to their personal email. 
+      The process is orchestrated by an async generator and tracked by traces.`,
+    tags: ["LLM", "Python", "Gradio", "OpenAI"],
+    links: {
+      github: "",
+      live: "https://huggingface.co/spaces/ricardo-viera/deep_research",
+    },
   },
 ];
 
@@ -217,15 +228,15 @@ export default function Home() {
                 className="rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-800"
                 href="mailto:ricardoviera01@gmail.com"
               >
-                Email
+                <Mail className="h-5 w-5" />
               </a>
               <a
                 className="rounded-xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/ricardo-viera/"
                 target="_blank"
                 rel="noreferrer"
               >
-                LinkedIn
+                <Linkedin className="h-5 w-5" />
               </a>
               <a
                 className="rounded-xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
@@ -233,7 +244,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub
+                 <Github className="h-5 w-5" />
               </a>
             </div>
           </Container>
