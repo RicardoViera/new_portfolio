@@ -50,8 +50,8 @@ function Pill({ children }: { children: React.ReactNode }) {
 
 export default function Home() {
   return (
-    <div className="min-h-dvh bg-white text-neutral-900">
-      <header className="sticky top-0 z-10 border-b bg-white/80 backdrop-blur">
+    <div className="min-h-dvh text-neutral-900">
+      <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-neutral-300/70 shadow-sm">
         <Container>
           <div className="flex h-16 items-center justify-between">
             <a href="#" className="font-semibold tracking-tight">
@@ -80,8 +80,13 @@ export default function Home() {
         </Container>
       </header>
 
-      <main>
-        <section className="py-20">
+      <main className="min-h-dvh bg-gradient-to-b from-white via-neutral-50 to-white">
+        <section className="relative py-24">
+          <div className="pointer-events-none absolute inset-0 z-0">
+            <div className="absolute left-1/2 top-12 h-[320px] w-[640px] -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 opacity-20 blur-3xl" />
+
+            <div className="absolute left-[38%] top-36 h-[300px] w-[620px] -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-200 via-indigo-200 to-fuchsia-200 opacity-15 blur-3xl" />
+          </div>
           <Container>
             <div className="max-w-2xl">
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -96,13 +101,13 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#projects"
-                  className="rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-800"
+                  className="rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg"
                 >
                   View Projects
                 </a>
                 <a
                   href="#contact"
-                  className="rounded-xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
+                  className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
                   Contact
                 </a>
@@ -110,24 +115,24 @@ export default function Home() {
                   href="https://www.linkedin.com/in/ricardo-viera/"
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
+                  className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
                   LinkedIn
                 </a>
               </div>
 
-              <div className="mt-10 flex flex-wrap gap-2">
+              {/* <div className="mt-10 flex flex-wrap gap-2">
                 <Pill>React</Pill>
                 <Pill>Next.js</Pill>
                 <Pill>TypeScript</Pill>
                 <Pill>Node.js</Pill>
                 <Pill>SQL</Pill>
-              </div>
+              </div> */}
             </div>
           </Container>
         </section>
 
-        <section id="projects" className="border-t py-16">
+        <section id="projects" className="border-t border-neutral-300/70 py-20">
           <Container>
             <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
             <p className="mt-2 text-neutral-700">
@@ -138,9 +143,11 @@ export default function Home() {
               {projects.map((p) => (
                 <article
                   key={p.title}
-                  className="rounded-2xl border p-6 shadow-sm"
+                  className="group rounded-2xl border bg-white/70 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-xl"
                 >
-                  <h3 className="text-lg font-semibold">{p.title}</h3>
+                  <h3 className="text-lg font-semibold transition group-hover:text-indigo-600">
+                    {p.title}
+                  </h3>
                   <p className="mt-2 text-sm leading-relaxed text-neutral-700">
                     {p.description}
                   </p>
@@ -179,44 +186,44 @@ export default function Home() {
           </Container>
         </section>
 
-        <section id="skills" className="border-t py-16">
+        <section id="skills" className="border-t border-neutral-300/70 py-20">
           <Container>
             <h2 className="text-2xl font-semibold tracking-tight">Skills</h2>
 
             <div className="mt-8 grid gap-6 sm:grid-cols-3">
               <div className="rounded-2xl border p-6">
                 <h3 className="font-semibold">Frontend</h3>
-                <ul className="mt-3 space-y-2 text-sm text-neutral-700">
-                  <li>React, Next.js</li>
-                  <li>TypeScript, JavaScript</li>
-                  <li>Tailwind, CSS/SCSS</li>
-                  <li>Angular</li>
-                </ul>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Pill>React, Next.js</Pill>
+                  <Pill>TypeScript, JavaScript</Pill>
+                  <Pill>Tailwind, CSS/SCSS</Pill>
+                  <Pill>Angular</Pill>
+                </div>
               </div>
               <div className="rounded-2xl border p-6">
                 <h3 className="font-semibold">Backend</h3>
-                <ul className="mt-3 space-y-2 text-sm text-neutral-700">
-                  <li>Node.js, Express</li>
-                  <li>Elixir, Phoenix</li>
-                  <li>REST APIs</li>
-                  <li>Cron jobs</li>
-                  <li>Python</li>
-                  <li>Java/Spring</li>
-                </ul>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Pill>Node.js, Express</Pill>
+                  <Pill>Elixir, Phoenix</Pill>
+                  <Pill>REST APIs</Pill>
+                  <Pill>Cron jobs</Pill>
+                  <Pill>Python</Pill>
+                  <Pill>Java/Spring</Pill>
+                </div>
               </div>
               <div className="rounded-2xl border p-6">
                 <h3 className="font-semibold">Data & Tools</h3>
-                <ul className="mt-3 space-y-2 text-sm text-neutral-700">
-                  <li>Postgres, SQL</li>
-                  <li>Prisma</li>
-                  <li>Git, CI/CD basics</li>
-                </ul>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Pill>Postgres, SQL</Pill>
+                  <Pill>Prisma</Pill>
+                  <Pill>Git, CI/CD basics</Pill>
+                </div>
               </div>
             </div>
           </Container>
         </section>
 
-        <section id="contact" className="border-t py-16">
+        <section id="contact" className="border-t border-neutral-300/70 py-20">
           <Container>
             <h2 className="text-2xl font-semibold tracking-tight">Contact</h2>
             <p className="mt-2 text-neutral-700">
@@ -225,13 +232,13 @@ export default function Home() {
 
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                className="rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-800"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg"
                 href="mailto:ricardoviera01@gmail.com"
               >
                 <Mail className="h-5 w-5" />
               </a>
               <a
-                className="rounded-xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg"
                 href="https://www.linkedin.com/in/ricardo-viera/"
                 target="_blank"
                 rel="noreferrer"
@@ -239,23 +246,47 @@ export default function Home() {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                className="rounded-xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg"
                 href="https://github.com/RicardoViera"
                 target="_blank"
                 rel="noreferrer"
               >
-                 <Github className="h-5 w-5" />
+                <Github className="h-5 w-5" />
               </a>
             </div>
           </Container>
         </section>
       </main>
 
-      <footer className="border-t py-10">
+      <footer className="mt-24 border-b border-transparent bg-[linear-gradient(to_right,transparent,rgba(0,0,0,0.08),transparent)] py-8">
         <Container>
-          <p className="text-sm text-neutral-600">
-            © {new Date().getFullYear()} Ricardo Viera. Built with Next.js.
-          </p>
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="font-semibold tracking-tight">
+              © {new Date().getFullYear()} Ricardo Viera{" "}
+              <span className="ml-2 text-neutral-500">Built with Next.js</span>
+            </p>
+
+            <div className="flex items-center gap-6 text-sm font-medium text-neutral-700">
+              <a
+                href="#projects"
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
+              >
+                Projects
+              </a>
+              <a
+                href="#skills"
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
+              >
+                Skills
+              </a>
+              <a
+                href="#contact"
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
         </Container>
       </footer>
     </div>
