@@ -81,14 +81,9 @@ export default function Home() {
       </header>
 
       <main className="min-h-dvh bg-gradient-to-b from-white via-neutral-50 to-white">
-        <section className="relative py-24">
-          <div className="pointer-events-none absolute inset-0 z-0">
-            <div className="absolute left-1/2 top-12 h-[320px] w-[640px] -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 opacity-20 blur-3xl" />
-
-            <div className="absolute left-[38%] top-36 h-[300px] w-[620px] -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-200 via-indigo-200 to-fuchsia-200 opacity-15 blur-3xl" />
-          </div>
+        <section className="py-28 sm:py-32 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.15),transparent_100%)]">
           <Container>
-            <div className="max-w-2xl">
+            <div className="max-w-2xl animate-[fadeUp_.6s_ease-out]">
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
                 Full Stack Software Engineer
               </h1>
