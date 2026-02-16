@@ -1,6 +1,24 @@
-import { Mail, Github, Linkedin } from "lucide-react";
+"use client";
+import { Mail, Github, Linkedin, Pi } from "lucide-react";
+import { useState } from "react";
+import Container from "./components/Container";
+import Pill from "./components/Pill";
+import AskRicardoSection from "./components/AskRicardoSection";
 
 const projects = [
+  {
+    title: "Deep Research",
+    description: `Deep research utilizes different agents in order to automate the research process.
+      The agents are in charge of recording user input, come up with clarifying questions, 
+      perform the research and finally show the results to the user, in markdown format. 
+      The user then has the option to email the research document to their personal email. 
+      The process is orchestrated by an async generator and tracked by traces.`,
+    tags: ["LLM", "Python", "Gradio", "OpenAI Agents SDK", "SendGrid"],
+    links: {
+      github: "",
+      live: "https://huggingface.co/spaces/ricardo-viera/deep_research",
+    },
+  },
   {
     title: "AI Product Copilot",
     description:
@@ -12,43 +30,40 @@ const projects = [
     },
   },
   {
-    title: "Career Conversation",
+    title: "Career Conversation - Ask Ricardo AI",
     description:
-      "An interactive Q&A agent that answers questions about my background using my resume/LinkedIn info.",
-    tags: ["LLM", "Python", "Gradio", "OpenAI", "MongoDB Atlas"],
+      `An interactive AI trained on my resume and portfolio. Ask about my projects, technical decisions, or experience. 
+      This Python project uses the power of GradioUI and OpenAI to seamlessly have a professional career conversation. 
+      Questions that the AI cannot answer will get sent as text messages using PushOver and stored in MongoDB Atlas Clusters. 
+      Users can also save their contact info so that I might get back to them.`,
+    tags: [
+      "LLM",
+      "Python",
+      "Gradio",
+      "OpenAI",
+      "MongoDB Atlas",
+      "Pushover Notifications",
+    ],
     links: {
       github: "",
       live: "https://huggingface.co/spaces/ricardo-viera/career_conversation",
     },
   },
-  {
-    title: "Deep Research",
-    description: `Deep research utilizes different agents in order to automate the research process.
-      The agents are in charge of recording user input, come up with clarifying questions, 
-      perform the research and finally show the results to the user, in markdown format. 
-      The user then has the option to email the research document to their personal email. 
-      The process is orchestrated by an async generator and tracked by traces.`,
-    tags: ["LLM", "Python", "Gradio", "OpenAI"],
-    links: {
-      github: "",
-      live: "https://huggingface.co/spaces/ricardo-viera/deep_research",
-    },
-  },
 ];
 
-function Container({ children }: { children: React.ReactNode }) {
-  return <div className="mx-auto w-full max-w-5xl px-6">{children}</div>;
-}
-
-function Pill({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-full border px-3 py-1 text-sm text-neutral-700">
-      {children}
-    </span>
-  );
-}
-
 export default function Home() {
+  const [copied, setCopied] = useState(false);
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText("ricardoviera01@gmail.com");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      window.location.href = "mailto:ricardoviera01@gmail.com";
+    }
+  }
+
   return (
     <div className="min-h-dvh text-neutral-900">
       <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-neutral-300/70 shadow-sm">
@@ -58,22 +73,37 @@ export default function Home() {
               Ricardo Viera
             </a>
             <nav className="flex items-center gap-6 text-sm">
-              <a className="hover:underline" href="#projects">
+              <a
+                href="#ask-ricardo"
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
+              >
+                Ask Ricardo AI
+              </a>
+
+              <a
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
+                href="#projects"
+              >
                 Projects
               </a>
-              <a className="hover:underline" href="#skills">
+              <a
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
+                href="#skills"
+              >
                 Skills
               </a>
-              <a className="hover:underline" href="#contact">
+              <a
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
+                href="#contact"
+              >
                 Contact
               </a>
               <a
-                className="rounded-lg border px-3 py-2 hover:bg-neutral-50"
-                href="https://github.com/RicardoViera"
+                href="/Resume.pdf"
                 target="_blank"
-                rel="noreferrer"
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
-                GitHub
+                Resume
               </a>
             </nav>
           </div>
@@ -81,16 +111,25 @@ export default function Home() {
       </header>
 
       <main className="min-h-dvh bg-gradient-to-b from-white via-neutral-50 to-white">
-        <section className="py-28 sm:py-32 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.15),transparent_100%)]">
+        <section className="relative flex min-h-[calc(100dvh-4rem)] items-center bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.15),transparent_100%)]">
           <Container>
             <div className="max-w-2xl animate-[fadeUp_.6s_ease-out]">
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
                 Full Stack Software Engineer
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-neutral-700">
-                I build responsive, production-ready web applications using
-                React/Next.js, Node, and relational databases — with a focus on
-                clean UX and solid system design.
+                Full-stack engineer with 7+ years building and shipping
+                production web applications. I've worked across multiple tech
+                stack during my career and utilized them to deliver clean user
+                experiences and scalable backend systems.
+              </p>
+
+              <p className="mt-3 text-sm text-neutral-600">
+                End-to-end features • API design • Background jobs • Data
+                migrations
+              </p>
+              <p className="mt-3 text-sm text-bold-600">
+                📍 Miami, FL • Open to full-stack roles (remote/hybrid/on-site)
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -101,31 +140,29 @@ export default function Home() {
                   View Projects
                 </a>
                 <a
-                  href="#contact"
+                  href="#ask-ricardo"
                   className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
-                  Contact
+                  Ask Ricardo AI
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/ricardo-viera/"
-                  target="_blank"
-                  rel="noreferrer"
+                  href="/Resume.pdf"
+                  download
                   className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
-                  LinkedIn
+                  Download Resume
                 </a>
               </div>
-
-              {/* <div className="mt-10 flex flex-wrap gap-2">
-                <Pill>React</Pill>
-                <Pill>Next.js</Pill>
-                <Pill>TypeScript</Pill>
-                <Pill>Node.js</Pill>
-                <Pill>SQL</Pill>
-              </div> */}
             </div>
           </Container>
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-neutral-500 animate-bounce">
+            <a href="#ask-ricardo" className="hover:text-neutral-800">
+              ↓ Learn More
+            </a>
+          </div>
         </section>
+
+        <AskRicardoSection></AskRicardoSection>
 
         <section id="projects" className="border-t border-neutral-300/70 py-20">
           <Container>
@@ -138,42 +175,53 @@ export default function Home() {
               {projects.map((p) => (
                 <article
                   key={p.title}
-                  className="group rounded-2xl border bg-white/70 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-xl"
+                  className="group rounded-2xl border bg-white/70 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-xl "
                 >
-                  <h3 className="text-lg font-semibold transition group-hover:text-indigo-600">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-700">
-                    {p.description}
-                  </p>
+                  {p.links.live && (
+                    <a
+                      href={p.links.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open live demo for ${p.title}`}
+                      className="absolute z-50 inset-0 rounded-2xl focus:outline-none"
+                    />
+                  )}
+                  <div className="relative z-10">
+                    <h3 className="text-lg font-semibold transition group-hover:text-indigo-600">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-neutral-700">
+                      {p.description}
+                    </p>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {p.tags.map((t) => (
-                      <Pill key={t}>{t}</Pill>
-                    ))}
-                  </div>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {p.tags.map((t) => (
+                        <Pill key={t}>{t}</Pill>
+                      ))}
+                    </div>
 
-                  <div className="mt-6 flex gap-3 text-sm">
-                    {p.links.github && (
-                      <a
-                        className="rounded-lg border px-3 py-2 hover:bg-neutral-50"
-                        href={p.links.github}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        GitHub
-                      </a>
-                    )}
-                    {p.links.live && (
-                      <a
-                        className="rounded-lg bg-neutral-900 px-3 py-2 text-white hover:bg-neutral-800"
-                        href={p.links.live}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Live Demo
-                      </a>
-                    )}
+                    <div className=" z-51 mt-6 flex gap-3 text-sm">
+                      {p.links.github && (
+                        <a
+                          className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                          href={p.links.github}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          GitHub
+                        </a>
+                      )}
+                      {p.links.live && (
+                        <a
+                          className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                          href={p.links.live}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Live Demo
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </article>
               ))}
@@ -189,10 +237,12 @@ export default function Home() {
               <div className="rounded-2xl border p-6">
                 <h3 className="font-semibold">Frontend</h3>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <Pill>React, Next.js</Pill>
-                  <Pill>TypeScript, JavaScript</Pill>
-                  <Pill>Tailwind, CSS/SCSS</Pill>
+                  <Pill>React</Pill>
                   <Pill>Angular</Pill>
+                  <Pill>Next.js</Pill>
+                  <Pill>TypeScript, JavaScript</Pill>
+                  <Pill>HTML</Pill>
+                  <Pill>Tailwind, CSS/SCSS</Pill>
                 </div>
               </div>
               <div className="rounded-2xl border p-6">
@@ -211,14 +261,18 @@ export default function Home() {
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Pill>Postgres, SQL</Pill>
                   <Pill>Prisma</Pill>
+                  <Pill>Mongo</Pill>
+                  <Pill>Supabase</Pill>
                   <Pill>Git, CI/CD basics</Pill>
+                  <Pill>Docker</Pill>
+                  <Pill>AWS</Pill>
                 </div>
               </div>
             </div>
           </Container>
         </section>
 
-        <section id="contact" className="border-t border-neutral-300/70 py-20">
+        <section id="contact" className="border-t border-neutral-300/70 py-8">
           <Container>
             <h2 className="text-2xl font-semibold tracking-tight">Contact</h2>
             <p className="mt-2 text-neutral-700">
@@ -226,12 +280,24 @@ export default function Home() {
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg"
-                href="mailto:ricardoviera01@gmail.com"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
+              <div className="relative group">
+                <button
+                  type="button"
+                  aria-label="Copy email"
+                  onClick={copy}
+                  className={`inline-flex h-11 w-11 items-center justify-center rounded-xl text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg ${
+                    copied
+                      ? "bg-emerald-600 hover:bg-emerald-600"
+                      : "bg-neutral-900 hover:bg-neutral-800"
+                  }`}
+                >
+                  <Mail className="h-5 w-5" />
+                </button>
+
+                <div className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100 whitespace-nowrap rounded-md border border-neutral-200 bg-white px-2 py-1 text-xs font-medium text-neutral-700 shadow-sm">
+                  {copied ? "Copied to clipboard!" : "Copy email"}
+                </div>
+              </div>
               <a
                 className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg"
                 href="https://www.linkedin.com/in/ricardo-viera/"
@@ -253,7 +319,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="mt-24 border-b border-transparent bg-[linear-gradient(to_right,transparent,rgba(0,0,0,0.08),transparent)] py-8">
+      <footer className="mt-10 border-b border-transparent bg-[linear-gradient(to_right,transparent,rgba(0,0,0,0.08),transparent)] py-8">
         <Container>
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="font-semibold tracking-tight">
@@ -279,6 +345,13 @@ export default function Home() {
                 className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
                 Contact
+              </a>
+              <a
+                href="/Resume.pdf"
+                target="_blank"
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
+              >
+                Resume
               </a>
             </div>
           </div>
