@@ -14,25 +14,16 @@ const projects = [
       The user then has the option to email the research document to their personal email. 
       The process is orchestrated by an async generator and tracked by traces.`,
     tags: ["LLM", "Python", "Gradio", "OpenAI Agents SDK", "SendGrid"],
+    impact:
+      "Aims to facilitate keeping web search process by automating and summarizing different sources. Users can keep records of these searches by emailing the results to the email of their choosing",
     links: {
       github: "",
       live: "https://huggingface.co/spaces/ricardo-viera/deep_research",
     },
   },
   {
-    title: "AI Product Copilot",
-    description:
-      "Chat-based product documentation assistant with file uploads and retrieval, built as a full-stack app.",
-    tags: ["Next.js", "TypeScript", "Postgres", "Prisma"],
-    links: {
-      github: "https://github.com/RicardoViera/ai-product-copilot",
-      live: "",
-    },
-  },
-  {
     title: "Career Conversation - Ask Ricardo AI",
-    description:
-      `An interactive AI trained on my resume and portfolio. Ask about my projects, technical decisions, or experience. 
+    description: `An interactive AI trained on my resume and portfolio. Ask about my projects, technical decisions, or experience. 
       This Python project uses the power of GradioUI and OpenAI to seamlessly have a professional career conversation. 
       Questions that the AI cannot answer will get sent as text messages using PushOver and stored in MongoDB Atlas Clusters. 
       Users can also save their contact info so that I might get back to them.`,
@@ -44,9 +35,22 @@ const projects = [
       "MongoDB Atlas",
       "Pushover Notifications",
     ],
+    impact:
+      "Gives recruiters an interactive way to explore my background and technical decisions.",
     links: {
       github: "",
       live: "https://huggingface.co/spaces/ricardo-viera/career_conversation",
+    },
+  },
+  {
+    title: "AI Product Copilot",
+    description:
+      "Chat-based product documentation assistant with file uploads and retrieval, built as a full-stack app.",
+    tags: ["Next.js", "TypeScript", "Postgres", "Prisma"],
+    impact: "Sample project to demonstrate AI/Full Stack Development knowledge",
+    links: {
+      github: "https://github.com/RicardoViera/ai-product-copilot",
+      live: "",
     },
   },
 ];
@@ -125,8 +129,8 @@ export default function Home() {
               </p>
 
               <p className="mt-3 text-sm text-neutral-600">
-                End-to-end features • API design • Background jobs • Data
-                migrations
+                End-to-end features • Complex Data Driven Responsive UIs • API
+                design • Background jobs • Data migrations
               </p>
               <p className="mt-3 text-sm text-bold-600">
                 📍 Miami, FL • Open to full-stack roles (remote/hybrid/on-site)
@@ -150,7 +154,13 @@ export default function Home() {
                   download
                   className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
-                  Download Resume
+                  Resume
+                </a>
+                <a
+                  href="#skills"
+                  className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
+                >
+                  Skills
                 </a>
               </div>
             </div>
@@ -192,6 +202,10 @@ export default function Home() {
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-neutral-700">
                       {p.description}
+                    </p>
+
+                    <p className="mt-2 text-sm leading-relaxed text-bold-700">
+                      Impact: {p.impact}
                     </p>
 
                     <div className="mt-4 flex flex-wrap gap-2">
@@ -267,6 +281,39 @@ export default function Home() {
                   <Pill>Docker</Pill>
                   <Pill>AWS</Pill>
                 </div>
+              </div>
+            </div>
+            <div className="mt-10">
+              <p className="text-sm font-medium text-bold-800">
+                Certifications
+              </p>
+
+              <div className="mt-4 flex flex-wrap items-center gap-4">
+                <a
+                  href="https://www.hackerrank.com/certificates/ec54171b1ca3"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition hover:scale-105"
+                >
+                  <img
+                    src="/reactcert.png"
+                    alt="HackerRank Problem Solving Certificate"
+                    className="h-40 w-auto"
+                  />
+                </a>
+
+                <a
+                  href="https://www.udemy.com/certificate/UC-93f010cb-62b8-4bf5-986b-aa233e7d3498/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition hover:scale-105"
+                >
+                  <img
+                    src="/udemy.jpg"
+                    alt="HackerRank Problem Solving Certificate"
+                    className="h-40 w-auto"
+                  />
+                </a>
               </div>
             </div>
           </Container>
