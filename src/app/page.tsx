@@ -111,7 +111,7 @@ export default function Home() {
           <Container>
             <div className="max-w-2xl animate-[fadeUp_.6s_ease-out]">
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                Full Stack Software Engineer
+                Full Stack Software Developer
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-neutral-700">
                 Full-stack engineer with 7+ years building and shipping

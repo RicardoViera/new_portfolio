@@ -3,9 +3,9 @@ import "./globals.css";
 import PortfolioChatDock from "./components/PortfolioChatDock";
 
 export const metadata: Metadata = {
-  title: "Ricardo Viera | Full Stack Software Engineer",
+  title: "Ricardo Viera | Full Stack Software Developer",
   description:
-    "Full stack software engineer building performant web apps with React/Next.js, Node, and cloud infrastructure.",
+    "Full stack software developer building performant web apps with React/Next.js, Node, and cloud infrastructure.",
 };
 
 export default function RootLayout({
