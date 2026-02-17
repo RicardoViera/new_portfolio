@@ -114,7 +114,7 @@ export default function Home() {
                 Full Stack Software Developer
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-neutral-700">
-                Full-stack engineer with 7+ years building and shipping
+                Full-stack developer with 7+ years building and shipping
                 production web applications. I've worked across multiple tech
                 stacks during my career and utilized them to deliver clean user
                 experiences and scalable backend systems. Previously building
