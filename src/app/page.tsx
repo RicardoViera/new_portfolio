@@ -1,9 +1,8 @@
 "use client";
-import { Mail, Github, Linkedin, Pi } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
 import { useState } from "react";
 import Container from "./components/Container";
 import Pill from "./components/Pill";
-import AskRicardoSection from "./components/AskRicardoSection";
 
 const projects = [
   {
@@ -22,7 +21,7 @@ const projects = [
     },
   },
   {
-    title: "Career Conversation - Ask Ricardo AI",
+    title: "Career Conversation",
     description: `An interactive AI trained on my resume and portfolio. Ask about my projects, technical decisions, or experience. 
       This Python project uses the power of GradioUI and OpenAI to seamlessly have a professional career conversation. 
       Questions that the AI cannot answer will get sent as text messages using PushOver and stored in MongoDB Atlas Clusters. 
@@ -44,8 +43,7 @@ const projects = [
   },
   {
     title: "AI Product Copilot",
-    description:
-      `An AI-powered SaaS application that allows product teams to upload documentation and chat with their product context using Retrieval-Augmented Generation (RAG).
+    description: `An AI-powered SaaS application that allows product teams to upload documentation and chat with their product context using Retrieval-Augmented Generation (RAG).
        Built to demonstrate modern full-stack architecture with streaming AI, vector search, authentication, and server-first design in Next.js App Router.`,
     tags: ["Next.js", "TypeScript", "Postgres", "Prisma"],
     impact: "Sample project to demonstrate AI/Full Stack Development knowledge",
@@ -79,13 +77,6 @@ export default function Home() {
             </a>
             <nav className="flex items-center gap-6 text-sm">
               <a
-                href="#ask-ricardo"
-                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
-              >
-                Ask Ricardo AI
-              </a>
-
-              <a
                 className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
                 href="#projects"
               >
@@ -104,7 +95,7 @@ export default function Home() {
                 Contact
               </a>
               <a
-                href="/Resume.pdf"
+                href="/Ricardo_Resume.pdf"
                 target="_blank"
                 className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
@@ -125,8 +116,10 @@ export default function Home() {
               <p className="mt-5 text-lg leading-relaxed text-neutral-700">
                 Full-stack engineer with 7+ years building and shipping
                 production web applications. I've worked across multiple tech
-                stack during my career and utilized them to deliver clean user
-                experiences and scalable backend systems.
+                stacks during my career and utilized them to deliver clean user
+                experiences and scalable backend systems. Previously building
+                clinician-facing systems used in production healthcare
+                environments.
               </p>
 
               <p className="mt-3 text-sm text-neutral-600">
@@ -145,35 +138,31 @@ export default function Home() {
                   View Projects
                 </a>
                 <a
-                  href="#ask-ricardo"
-                  className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
+                  href="#chat"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.portfolioChat?.open();
+                  }}
+                  className="rounded-xl border border-neutral-900/20 bg-white/70 px-5 py-3 text-sm font-medium text-neutral-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
-                  Ask Ricardo AI
+                  💬 Ask Ricardo
                 </a>
                 <a
-                  href="/Resume.pdf"
+                  href="/Ricardo_Resume.pdf"
                   download
                   className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
-                  Resume
-                </a>
-                <a
-                  href="#skills"
-                  className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
-                >
-                  Skills
+                  Download Resume
                 </a>
               </div>
             </div>
           </Container>
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-neutral-500 animate-bounce">
-            <a href="#ask-ricardo" className="hover:text-neutral-800">
+            <a href="#projects" className="hover:text-neutral-800">
               ↓ Learn More
             </a>
           </div>
         </section>
-
-        <AskRicardoSection></AskRicardoSection>
 
         <section id="projects" className="border-t border-neutral-300/70 py-20">
           <Container>
@@ -186,27 +175,31 @@ export default function Home() {
               {projects.map((p) => (
                 <article
                   key={p.title}
-                  className="group rounded-2xl border bg-white/70 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-xl "
+                  className="group relative rounded-2xl border bg-white/70 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-xl"
                 >
-                  {p.links.live && (
-                    <a
-                      href={p.links.live}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`Open live demo for ${p.title}`}
-                      className="absolute z-50 inset-0 rounded-2xl focus:outline-none"
-                    />
-                  )}
-                  <div className="relative z-10">
+                  <div>
                     <h3 className="text-lg font-semibold transition group-hover:text-indigo-600">
-                      {p.title}
+                      {p.links.live ? (
+                        <a
+                          href={p.links.live}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="relative inline-block after:absolute after:inset-0 after:content-['']"
+                          aria-label={`Open live demo for ${p.title}`}
+                        >
+                          {p.title}
+                        </a>
+                      ) : (
+                        p.title
+                      )}
                     </h3>
+
                     <p className="mt-2 text-sm leading-relaxed text-neutral-700">
                       {p.description}
                     </p>
 
-                    <p className="mt-2 text-sm leading-relaxed text-bold-700">
-                      Impact: {p.impact}
+                    <p className="mt-2 text-sm leading-relaxed text-neutral-700">
+                      <span className="font-semibold">Impact:</span> {p.impact}
                     </p>
 
                     <div className="mt-4 flex flex-wrap gap-2">
@@ -215,10 +208,10 @@ export default function Home() {
                       ))}
                     </div>
 
-                    <div className=" z-51 mt-6 flex gap-3 text-sm">
+                    <div className="relative z-10 mt-6 flex gap-3 text-sm">
                       {p.links.github && (
                         <a
-                          className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                          className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-md"
                           href={p.links.github}
                           target="_blank"
                           rel="noreferrer"
@@ -228,7 +221,7 @@ export default function Home() {
                       )}
                       {p.links.live && (
                         <a
-                          className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                          className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-md"
                           href={p.links.live}
                           target="_blank"
                           rel="noreferrer"
@@ -395,7 +388,7 @@ export default function Home() {
                 Contact
               </a>
               <a
-                href="/Resume.pdf"
+                href="/Ricardo_Resume.pdf"
                 target="_blank"
                 className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
