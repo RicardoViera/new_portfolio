@@ -13,7 +13,7 @@ declare global {
   }
 
 export default function PortfolioChatDock() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   // Optional: close on Escape
   useEffect(() => {
