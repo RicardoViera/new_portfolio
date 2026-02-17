@@ -45,12 +45,13 @@ const projects = [
   {
     title: "AI Product Copilot",
     description:
-      "Chat-based product documentation assistant with file uploads and retrieval, built as a full-stack app.",
+      `An AI-powered SaaS application that allows product teams to upload documentation and chat with their product context using Retrieval-Augmented Generation (RAG).
+       Built to demonstrate modern full-stack architecture with streaming AI, vector search, authentication, and server-first design in Next.js App Router.`,
     tags: ["Next.js", "TypeScript", "Postgres", "Prisma"],
     impact: "Sample project to demonstrate AI/Full Stack Development knowledge",
     links: {
       github: "https://github.com/RicardoViera/ai-product-copilot",
-      live: "",
+      live: "https://ai-product-copilot-xi.vercel.app/",
     },
   },
 ];
