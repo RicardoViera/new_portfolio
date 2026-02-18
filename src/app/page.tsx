@@ -1,5 +1,5 @@
 "use client";
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin, Menu, X } from "lucide-react";
 import { useState } from "react";
 import Container from "./components/Container";
 import Pill from "./components/Pill";
@@ -56,6 +56,7 @@ const projects = [
 
 export default function Home() {
   const [copied, setCopied] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   async function copy() {
     try {
@@ -75,39 +76,89 @@ export default function Home() {
             <a href="#" className="font-semibold tracking-tight">
               Ricardo Viera
             </a>
-            <nav className="flex items-center gap-6 text-sm">
+
+            {/* Desktop nav */}
+            <nav className="hidden sm:flex items-center gap-6 text-sm">
               <a
-                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
                 href="#projects"
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
                 Projects
               </a>
               <a
-                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
                 href="#skills"
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
                 Skills
               </a>
               <a
-                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
                 href="#contact"
+                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
                 Contact
               </a>
               <a
-                href="/Ricardo_Resume.pdf"
+                href="/Resume.pdf"
                 target="_blank"
                 className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
                 Resume
               </a>
             </nav>
+
+            {/* Mobile hamburger */}
+            <button
+              className="sm:hidden inline-flex items-center justify-center rounded-lg p-2 hover:bg-neutral-200/60 transition"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </Container>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="sm:hidden border-t border-neutral-200 bg-white/95 backdrop-blur-xl">
+            <Container>
+              <nav className="flex flex-col py-4 text-sm">
+                <a
+                  href="#projects"
+                  onClick={() => setMenuOpen(false)}
+                  className="mobile-link"
+                >
+                  Projects
+                </a>
+                <a
+                  href="#skills"
+                  onClick={() => setMenuOpen(false)}
+                  className="mobile-link"
+                >
+                  Skills
+                </a>
+                <a
+                  href="#contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="mobile-link"
+                >
+                  Contact
+                </a>
+                <a
+                  href="/Resume.pdf"
+                  target="_blank"
+                  onClick={() => setMenuOpen(false)}
+                  className="mobile-link"
+                >
+                  Resume
+                </a>
+              </nav>
+            </Container>
+          </div>
+        )}
       </header>
 
       <main className="min-h-dvh bg-gradient-to-b from-white via-neutral-50 to-white">
-        <section className="relative flex min-h-[calc(100dvh-4rem)] items-center bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.15),transparent_100%)]">
+        <section className="relative flex min-h-[auto] sm:min-h-[calc(100dvh-4rem)] py-16 sm:py-0 items-center bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.15),transparent_100%)]">
           <Container>
             <div className="max-w-2xl animate-[fadeUp_.6s_ease-out]">
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -302,11 +353,7 @@ export default function Home() {
                   rel="noreferrer"
                   className="transition hover:scale-105"
                 >
-                  <img
-                    src="/udemy.jpg"
-                    alt="Udemy"
-                    className="h-40 w-auto"
-                  />
+                  <img src="/udemy.jpg" alt="Udemy" className="h-40 w-auto" />
                 </a>
                 <a
                   href="https://www.hackerrank.com/certificates/ba09b6ff100e"
@@ -324,63 +371,57 @@ export default function Home() {
             </div>
           </Container>
         </section>
+      </main>
 
-        <section id="contact" className="border-t border-neutral-300/70 py-8">
-          <Container>
-            <h2 className="text-2xl font-semibold tracking-tight">Contact</h2>
-            <p className="mt-2 text-neutral-700">
-              Want to chat? Email me or reach out on LinkedIn.
+      <footer className="mt-10 border-b border-transparent bg-[linear-gradient(to_right,transparent,rgba(0,0,0,0.08),transparent)] py-10">
+        <Container>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-center font-semibold tracking-tight sm:text-left">
+              © {new Date().getFullYear()} Ricardo Viera{" "}
+              <span className="ml-2 font-normal text-neutral-500">
+                Built with Next.js
+              </span>
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <div className="relative group">
-                <button
-                  type="button"
-                  aria-label="Copy email"
-                  onClick={copy}
-                  className={`inline-flex h-11 w-11 items-center justify-center rounded-xl text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg ${
-                    copied
-                      ? "bg-emerald-600 hover:bg-emerald-600"
-                      : "bg-neutral-900 hover:bg-neutral-800"
-                  }`}
-                >
-                  <Mail className="h-5 w-5" />
-                </button>
+            <div className="flex items-center gap-3">
+              {/* Email */}
+              <button
+                onClick={copy}
+                className={`inline-flex h-11 w-11 items-center justify-center rounded-xl text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95 ${
+                  copied
+                    ? "bg-emerald-600 hover:bg-emerald-600"
+                    : "bg-neutral-900 hover:bg-neutral-800"
+                }`}
+                aria-label="Copy email"
+                type="button"
+              >
+                <Mail className="h-5 w-5" />
+              </button>
 
-                <div className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100 whitespace-nowrap rounded-md border border-neutral-200 bg-white px-2 py-1 text-xs font-medium text-neutral-700 shadow-sm">
-                  {copied ? "Copied to clipboard!" : "Copy email"}
-                </div>
-              </div>
+              {/* LinkedIn */}
               <a
-                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg active:scale-95"
                 href="https://www.linkedin.com/in/ricardo-viera/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
+
+              {/* GitHub */}
               <a
-                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg active:scale-95"
                 href="https://github.com/RicardoViera"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
               </a>
             </div>
-          </Container>
-        </section>
-      </main>
 
-      <footer className="mt-10 border-b border-transparent bg-[linear-gradient(to_right,transparent,rgba(0,0,0,0.08),transparent)] py-8">
-        <Container>
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="font-semibold tracking-tight">
-              © {new Date().getFullYear()} Ricardo Viera{" "}
-              <span className="ml-2 text-neutral-500">Built with Next.js</span>
-            </p>
-
-            <div className="flex items-center gap-6 text-sm font-medium text-neutral-700">
+            <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-neutral-700 sm:justify-end">
               <a
                 href="#projects"
                 className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
@@ -394,19 +435,13 @@ export default function Home() {
                 Skills
               </a>
               <a
-                href="#contact"
-                className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
-              >
-                Contact
-              </a>
-              <a
-                href="/Ricardo_Resume.pdf"
+                href="/Resume.pdf"
                 target="_blank"
                 className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
                 Resume
               </a>
-            </div>
+            </nav>
           </div>
         </Container>
       </footer>
