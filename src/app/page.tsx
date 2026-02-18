@@ -291,7 +291,7 @@ export default function Home() {
                 >
                   <img
                     src="/reactcert.png"
-                    alt="HackerRank Problem Solving Certificate"
+                    alt="HackerRank React Problem Solving Certificate"
                     className="h-40 w-auto"
                   />
                 </a>
@@ -304,7 +304,19 @@ export default function Home() {
                 >
                   <img
                     src="/udemy.jpg"
-                    alt="HackerRank Problem Solving Certificate"
+                    alt="Udemy"
+                    className="h-40 w-auto"
+                  />
+                </a>
+                <a
+                  href="https://www.hackerrank.com/certificates/ba09b6ff100e"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition hover:scale-105"
+                >
+                  <img
+                    src="/angular.png"
+                    alt="HackerRank Angular Problem Solving Certificate"
                     className="h-40 w-auto"
                   />
                 </a>
