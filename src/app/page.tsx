@@ -98,7 +98,7 @@ export default function Home() {
                 Contact
               </a>
               <a
-                href="/Resume.pdf"
+                href="/Ricardo_Resume.pdf"
                 target="_blank"
                 className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
@@ -144,7 +144,7 @@ export default function Home() {
                   Contact
                 </a>
                 <a
-                  href="/Resume.pdf"
+                  href="/Ricardo_Resume.pdf"
                   target="_blank"
                   onClick={() => setMenuOpen(false)}
                   className="mobile-link"
@@ -199,7 +199,7 @@ export default function Home() {
                   💬 Ask Ricardo
                 </a>
                 <a
-                  href="/Ricardo_Resume.pdf"
+                  href="/Ricardo_Ricardo_Resume.pdf"
                   download
                   className="rounded-xl border bg-white/60 px-5 py-3 text-sm font-medium shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
@@ -373,7 +373,10 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="mt-10 border-b border-transparent bg-[linear-gradient(to_right,transparent,rgba(0,0,0,0.08),transparent)] py-10">
+      <footer
+        id="contact"
+        className="mt-10 border-b border-transparent bg-[linear-gradient(to_right,transparent,rgba(0,0,0,0.08),transparent)] py-10"
+      >
         <Container>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-center font-semibold tracking-tight sm:text-left">
@@ -383,42 +386,45 @@ export default function Home() {
               </span>
             </p>
 
-            <div className="flex items-center gap-3">
-              {/* Email */}
-              <button
-                onClick={copy}
-                className={`inline-flex h-11 w-11 items-center justify-center rounded-xl text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95 ${
-                  copied
-                    ? "bg-emerald-600 hover:bg-emerald-600"
-                    : "bg-neutral-900 hover:bg-neutral-800"
-                }`}
-                aria-label="Copy email"
-                type="button"
-              >
-                <Mail className="h-5 w-5" />
-              </button>
+            <div className="flex flex-col items-center gap-1">
+              Lets build something together
+              <div className="flex items-center gap-3">
+                {/* Email */}
+                <button
+                  onClick={copy}
+                  className={`inline-flex h-11 w-11 items-center justify-center rounded-xl text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95 ${
+                    copied
+                      ? "bg-emerald-600 hover:bg-emerald-600"
+                      : "bg-neutral-900 hover:bg-neutral-800"
+                  }`}
+                  aria-label="Copy email"
+                  type="button"
+                >
+                  <Mail className="h-5 w-5" />
+                </button>
 
-              {/* LinkedIn */}
-              <a
-                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg active:scale-95"
-                href="https://www.linkedin.com/in/ricardo-viera/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
+                {/* LinkedIn */}
+                <a
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg active:scale-95"
+                  href="https://www.linkedin.com/in/ricardo-viera/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
 
-              {/* GitHub */}
-              <a
-                className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg active:scale-95"
-                href="https://github.com/RicardoViera"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
+                {/* GitHub */}
+                <a
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-md transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-lg active:scale-95"
+                  href="https://github.com/RicardoViera"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
+                </a>
+              </div>
             </div>
 
             <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-medium text-neutral-700 sm:justify-end">
@@ -435,7 +441,7 @@ export default function Home() {
                 Skills
               </a>
               <a
-                href="/Resume.pdf"
+                href="/Ricardo_Resume.pdf"
                 target="_blank"
                 className="relative transition hover:text-neutral-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-neutral-900 after:transition-all hover:after:w-full"
               >
