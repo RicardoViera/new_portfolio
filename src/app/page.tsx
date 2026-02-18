@@ -329,7 +329,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-10">
-              <p className="text-sm font-medium text-bold-800">
+              <p className="text-m font-medium font-semibold">
                 Certifications
               </p>
 
