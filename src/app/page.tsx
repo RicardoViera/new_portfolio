@@ -329,9 +329,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-10">
-              <p className="text-m font-medium font-semibold">
-                Certifications
-              </p>
+              <p className="text-m font-medium font-semibold">Certifications</p>
 
               <div className="mt-4 flex flex-wrap items-center gap-4">
                 <a
@@ -348,14 +346,6 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="https://www.udemy.com/certificate/UC-93f010cb-62b8-4bf5-986b-aa233e7d3498/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition hover:scale-105"
-                >
-                  <img src="/udemy.jpg" alt="Udemy" className="h-40 w-auto" />
-                </a>
-                <a
                   href="https://www.hackerrank.com/certificates/ba09b6ff100e"
                   target="_blank"
                   rel="noreferrer"
@@ -364,6 +354,28 @@ export default function Home() {
                   <img
                     src="/angular.png"
                     alt="HackerRank Angular Problem Solving Certificate"
+                    className="h-40 w-auto"
+                  />
+                </a>
+
+                <a
+                  href="https://www.udemy.com/certificate/UC-93f010cb-62b8-4bf5-986b-aa233e7d3498/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition hover:scale-105"
+                >
+                  <img src="/udemy.jpg" alt="Udemy" className="h-40 w-auto" />
+                </a>
+
+                <a
+                  href="https://www.udemy.com/certificate/UC-c93a5f3e-1411-4db1-bcf3-8929fe94934f/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition hover:scale-105"
+                >
+                  <img
+                    src="/udemy_sys_design.jpg"
+                    alt="Udemy-sys-design"
                     className="h-40 w-auto"
                   />
                 </a>
